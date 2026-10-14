@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>磊毛阅读 · 聚合源</title>
+<style>
+  :root { color-scheme: light; }
+  * { box-sizing: border-box; }
+  body { margin: 0; padding: 28px 18px 64px; background: #f6f7f9; color: #1f2328;
+         font: 15px/1.6 -apple-system, "Segoe UI", "Microsoft YaHei", sans-serif; }
+  .wrap { max-width: 820px; margin: 0 auto; }
+  h1 { margin: 0 0 6px; font-size: 26px; }
+  .sub { margin: 0 0 26px; color: #59636e; }
+  .total { font-weight: 600; color: #1f2328; }
+  .card { background: #fff; border: 1px solid #d8dee4; border-radius: 10px;
+           padding: 16px 18px; margin-bottom: 14px; }
+  .card header { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+  h2 { margin: 0; font-size: 17px; }
+  .badge { margin-left: 8px; padding: 1px 8px; border-radius: 999px; background: #eef1f4;
+            color: #59636e; font-size: 12px; font-weight: 500; vertical-align: 2px; }
+  .file { margin: 3px 0 0; color: #6e7781; font-size: 12.5px; font-family: ui-monospace, Consolas, monospace; }
+  .count { font-size: 22px; font-weight: 700; color: #d1242f; white-space: nowrap; }
+  .count small { margin-left: 3px; font-size: 12px; font-weight: 400; color: #6e7781; }
+  .url { display: flex; gap: 8px; margin-top: 12px; }
+  .url code { flex: 1; min-width: 0; overflow-x: auto; white-space: nowrap; padding: 7px 10px;
+               background: #f6f8fa; border: 1px solid #d8dee4; border-radius: 6px;
+               font: 12.5px/1.5 ui-monospace, Consolas, monospace; }
+  button { padding: 7px 14px; border: 1px solid #d0d7de; border-radius: 6px; background: #f6f8fa;
+            cursor: pointer; font-size: 13px; color: #1f2328; }
+  button:hover { background: #eef1f4; }
+  details { margin-top: 12px; }
+  summary { cursor: pointer; color: #0969da; font-size: 13.5px; }
+  ul { margin: 10px 0 0; padding: 0; list-style: none; columns: 2; column-gap: 22px; }
+  li { padding: 3px 0; font-size: 13px; break-inside: avoid; }
+  .nm { margin-right: 6px; }
+  .ex { color: #6e7781; font-size: 12px; }
+  footer { margin-top: 26px; color: #6e7781; font-size: 12.5px; }
+  footer p { margin: 5px 0; }
+  @media (max-width: 620px) { ul { columns: 1; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>磊毛阅读 · 聚合源</h1>
+  <p class="sub">共 <span class="total">169</span> 个源，按小说 / 漫画 / 影视分好包，粘进 App 一次导入一整包。</p>
+  <section class="card">
+    <header>
+      <div>
+        <h2>小说<span class="badge">legado 书源</span></h2>
+        <p class="file">novel.json</p>
+      </div>
+      <div class="count">69<small>个源</small></div>
+    </header>
+    <div class="url"><code id="unovel.json">https://raw.githubusercontent.com/leimao2333/leimao-sources/main/novel.json</code>
+      <button onclick="cp('unovel.json', this)">复制</button></div>
+    <details><summary>展开源列表（69）</summary><ul><li><span class="nm">中文书城</span><span class="ex">备用</span></li><li><span class="nm">笔趣阁</span><span class="ex">备用</span></li><li><span class="nm">梧桐中文</span><span class="ex">标准</span></li><li><span class="nm">黑岩小说</span><span class="ex">备用</span></li><li><span class="nm">若初文学</span><span class="ex">备用</span></li><li><span class="nm">第一版主</span><span class="ex">备用</span></li><li><span class="nm">企鹅阅读</span><span class="ex">精选</span></li><li><span class="nm">Xnxx</span><span class="ex">备用</span></li><li><span class="nm">画本阅读</span><span class="ex">标准</span></li><li><span class="nm">红叶书斋</span><span class="ex">备用</span></li><li><span class="nm">心轻小说</span><span class="ex">标准</span></li><li><span class="nm">米读小说</span><span class="ex">标准</span></li><li><span class="nm">殓师灵异</span><span class="ex">标准</span></li><li><span class="nm">躺着看小说</span><span class="ex">备用</span></li><li><span class="nm">企鹅阅读</span><span class="ex">精选</span></li><li><span class="nm">晋江文学</span><span class="ex">备用</span></li><li><span class="nm">爱发电网</span><span class="ex">精选</span></li><li><span class="nm">去读书啊</span><span class="ex">备用</span></li><li><span class="nm">顶点小说</span><span class="ex">备用</span></li><li><span class="nm">爱久久网</span><span class="ex">备用</span></li><li><span class="nm">飞卢小说</span><span class="ex">备用</span></li><li><span class="nm">海马读书</span><span class="ex">备用</span></li><li><span class="nm">书包小说网</span><span class="ex">备用</span></li><li><span class="nm">猫九小说</span><span class="ex">备用</span></li><li><span class="nm">笔趣阁</span><span class="ex">备用</span></li><li><span class="nm">笔趣阁</span><span class="ex">备用</span></li><li><span class="nm">搜书网</span><span class="ex">备用</span></li><li><span class="nm">米读看书</span><span class="ex">标准</span></li><li><span class="nm">神话之后</span><span class="ex">备用</span></li><li><span class="nm">大唐小说</span><span class="ex">备用</span></li><li><span class="nm">古龙武侠</span><span class="ex">精选</span></li><li><span class="nm">废纸文学</span><span class="ex">备用</span></li><li><span class="nm">肉书屋</span><span class="ex">标准</span></li><li><span class="nm">何以生肖</span><span class="ex">标准</span></li><li><span class="nm">话本小说</span><span class="ex">标准</span></li><li><span class="nm">安轻小说</span><span class="ex">标准</span></li><li><span class="nm">中意文学</span><span class="ex">标准</span></li><li><span class="nm">笔趣阁</span><span class="ex">备用</span></li><li><span class="nm">52PO小说</span><span class="ex">备用</span></li><li><span class="nm">第一版主</span><span class="ex">备用</span></li><li><span class="nm">轻菠萝包</span><span class="ex">标准</span></li><li><span class="nm">海棠书屋</span><span class="ex">备用</span></li><li><span class="nm">中文万维</span><span class="ex">标准</span></li><li><span class="nm">晋江文学</span><span class="ex">精选</span></li><li><span class="nm">废文网</span><span class="ex">备用</span></li><li><span class="nm">繁星四月</span><span class="ex">备用</span></li><li><span class="nm">笔趣阁</span><span class="ex">备用</span></li><li><span class="nm">霸王街机</span><span class="ex">备用</span></li><li><span class="nm">红薯阅读</span><span class="ex">备用</span></li><li><span class="nm">企鹅阅读</span><span class="ex">精选</span></li><li><span class="nm">安稳小说</span><span class="ex">备用</span></li><li><span class="nm">贝壳读书</span><span class="ex">备用</span></li><li><span class="nm">米读小说</span><span class="ex">标准</span></li><li><span class="nm">365book</span><span class="ex">备用</span></li><li><span class="nm">飞卢小说</span><span class="ex">标准</span></li><li><span class="nm">海词精选</span><span class="ex">精选</span></li><li><span class="nm">栀子欢网</span><span class="ex">备用</span></li><li><span class="nm">猫眼看书</span><span class="ex">备用</span></li><li><span class="nm">爱下电子</span><span class="ex">精选</span></li><li><span class="nm">星星小说</span><span class="ex">备用</span></li><li><span class="nm">飞卢小说</span><span class="ex">标准</span></li><li><span class="nm">天地中文</span><span class="ex">备用</span></li><li><span class="nm">爱下电子书</span><span class="ex">备用</span></li><li><span class="nm">晋江详榜</span><span class="ex">备用</span></li><li><span class="nm">商店小说</span><span class="ex">备用</span></li><li><span class="nm">奇异网</span><span class="ex">备用</span></li><li><span class="nm">笔迷读</span><span class="ex">标准</span></li><li><span class="nm">阅友小说</span><span class="ex">http://m.suixkan.com</span></li><li><span class="nm">独步小说网</span><span class="ex">搜索暂不可用</span></li></ul></details>
+  </section>
+  <section class="card">
+    <header>
+      <div>
+        <h2>漫画<span class="badge">legado 书源</span></h2>
+        <p class="file">comic-legado.json</p>
+      </div>
+      <div class="count">11<small>个源</small></div>
+    </header>
+    <div class="url"><code id="ucomic-legado.json">https://raw.githubusercontent.com/leimao2333/leimao-sources/main/comic-legado.json</code>
+      <button onclick="cp('ucomic-legado.json', this)">复制</button></div>
+    <details><summary>展开源列表（11）</summary><ul><li><span class="nm">酸奶漫画</span><span class="ex">漫画 书源</span></li><li><span class="nm">酝酿漫画（魔法）</span><span class="ex">漫画 书源</span></li><li><span class="nm">点外漫画（英文）</span><span class="ex">漫画 书源</span></li><li><span class="nm">酸奶漫画</span><span class="ex">漫画 书源</span></li><li><span class="nm">包子漫画（魔法）</span><span class="ex">漫画 书源</span></li><li><span class="nm">漫画小屋（优）</span><span class="ex">漫画 书源</span></li><li><span class="nm">铅笔漫画（优）</span><span class="ex">漫画 书源</span></li><li><span class="nm">漫画小屋（优）</span><span class="ex">漫画 书源</span></li><li><span class="nm">蛮歌漫画（优）</span><span class="ex">漫画 书源</span></li><li><span class="nm">星际漫画（优）</span><span class="ex">漫画 书源</span></li><li><span class="nm">追更漫画（优+）</span><span class="ex">漫画 书源</span></li></ul></details>
+  </section>
+  <section class="card">
+    <header>
+      <div>
+        <h2>漫画<span class="badge">Venera 源</span></h2>
+        <p class="file">venera/index.json</p>
+      </div>
+      <div class="count">25<small>个源</small></div>
+    </header>
+    <div class="url"><code id="uvenera/index.json">https://raw.githubusercontent.com/leimao2333/leimao-sources/main/venera/index.json</code>
+      <button onclick="cp('uvenera/index.json', this)">复制</button></div>
+    <details><summary>展开源列表（25）</summary><ul><li><span class="nm">包子漫画</span><span class="ex">baozi.js</span></li><li><span class="nm">CCC追漫台</span><span class="ex">ccc.js</span></li><li><span class="nm">拷贝漫画</span><span class="ex">copy_manga.js</span></li><li><span class="nm">拷贝漫画M</span><span class="ex">copy_manga_multi_accounts.js</span></li><li><span class="nm">ehentai</span><span class="ex">ehentai.js</span></li><li><span class="nm">GoDa漫画</span><span class="ex">goda.js</span></li><li><span class="nm">嗨皮漫画</span><span class="ex">happy.js</span></li><li><span class="nm">H-Comic</span><span class="ex">hcomic.js</span></li><li><span class="nm">hitomi.la</span><span class="ex">hitomi.js</span></li><li><span class="nm">热辣漫画</span><span class="ex">hot_manga.js</span></li><li><span class="nm">爱看漫</span><span class="ex">ikmmh.js</span></li><li><span class="nm">jcomic.net</span><span class="ex">jcomic.js</span></li><li><span class="nm">禁漫天堂</span><span class="ex">jm.js</span></li><li><span class="nm">Kavita</span><span class="ex">kavita.js</span></li><li><span class="nm">Komiic</span><span class="ex">komiic.js</span></li><li><span class="nm">MangaDex</span><span class="ex">manga_dex.js</span></li><li><span class="nm">漫画人</span><span class="ex">manhuaren.js</span></li><li><span class="nm">漫画1234</span><span class="ex">mh1234.js</span></li><li><span class="nm">18漫画</span><span class="ex">mh18.js</span></li><li><span class="nm">漫小肆</span><span class="ex">mxs.js</span></li><li><span class="nm">MYCOMIC</span><span class="ex">mycomic.js</span></li><li><span class="nm">nhentai</span><span class="ex">nhentai.js</span></li><li><span class="nm">Picacg</span><span class="ex">picacg.js</span></li><li><span class="nm">少年ジャンプ＋</span><span class="ex">shonen_jump_plus.js</span></li><li><span class="nm">紳士漫畫</span><span class="ex">wnacg.js</span></li></ul></details>
+  </section>
+  <section class="card">
+    <header>
+      <div>
+        <h2>影视<span class="badge">MoonTV 采集源</span></h2>
+        <p class="file">video.json</p>
+      </div>
+      <div class="count">36<small>个源</small></div>
+    </header>
+    <div class="url"><code id="uvideo.json">https://raw.githubusercontent.com/leimao2333/leimao-sources/main/video.json</code>
+      <button onclick="cp('uvideo.json', this)">复制</button></div>
+    <details><summary>展开源列表（36）</summary><ul><li><span class="nm">🎬艾旦影视</span><span class="ex">pz.v88.qzz.io</span></li><li><span class="nm">🎬百度云zy</span><span class="ex">pz.v88.qzz.io</span></li><li><span class="nm">🎬豪华资源</span><span class="ex">hhzyapi.com</span></li><li><span class="nm">🎬如意资源</span><span class="ex">cj.rycjapi.com</span></li><li><span class="nm">🎬魔都动漫</span><span class="ex">caiji.moduapi.cc</span></li><li><span class="nm">🎬红牛资源</span><span class="ex">www.hongniuzy2.com</span></li><li><span class="nm">🎬光速资源</span><span class="ex">api.guangsuapi.com</span></li><li><span class="nm">🎬U酷影视</span><span class="ex">api.ukuapi88.com</span></li><li><span class="nm">🎬飘零资源</span><span class="ex">p2100.net</span></li><li><span class="nm">🎬金鹰点播</span><span class="ex">jyzyapi.com</span></li><li><span class="nm">🎬速播资源</span><span class="ex">subocaiji.com</span></li><li><span class="nm">🎬新浪资源</span><span class="ex">api.xinlangapi.com</span></li><li><span class="nm">🎬无尽资源</span><span class="ex">api.wujinapi.me</span></li><li><span class="nm">🎬最大资源</span><span class="ex">api.zuidapi.com</span></li><li><span class="nm">🎬暴风资源</span><span class="ex">bfzyapi.com</span></li><li><span class="nm">🎬非凡资源</span><span class="ex">api.ffzyapi.com</span></li><li><span class="nm">🎬魔都资源</span><span class="ex">www.mdzyapi.com</span></li><li><span class="nm">🎬极速资源</span><span class="ex">jszyapi.com</span></li><li><span class="nm">🎬360 资源</span><span class="ex">360zyzz.com</span></li><li><span class="nm">🎬量子资源</span><span class="ex">cj.lzcaiji.com</span></li><li><span class="nm">🎬猫眼资源</span><span class="ex">api.maoyanapi.top</span></li><li><span class="nm">🎬电影天堂</span><span class="ex">caiji.dyttzyapi.com</span></li><li><span class="nm">🎬iKun资源</span><span class="ex">ikunzyapi.com</span></li><li><span class="nm">🎬茅台资源</span><span class="ex">caiji.maotaizy.cc</span></li><li><span class="nm">🎬豆瓣资源</span><span class="ex">caiji.dbzy5.com</span></li><li><span class="nm">🎬-爱奇艺-</span><span class="ex">iqiyizyapi.com</span></li><li><span class="nm">🎬樱花资源</span><span class="ex">m3u8.apiyhzy.com</span></li><li><span class="nm">🎬闪电资源</span><span class="ex">xsd.sdzyapi.com</span></li><li><span class="nm">🎬快车资源</span><span class="ex">caiji.kuaichezy.org</span></li><li><span class="nm">🎬索尼资源</span><span class="ex">suoniapi.com</span></li><li><span class="nm">🎬鸭鸭资源</span><span class="ex">cj.yayazy.net</span></li><li><span class="nm">🎬虎牙资源</span><span class="ex">www.huyaapi.com</span></li><li><span class="nm">🎬优质资源</span><span class="ex">api.yzzy-api.com</span></li><li><span class="nm">🎬无尽影视</span><span class="ex">api.wujinapi.com</span></li><li><span class="nm">🎬最大点播</span><span class="ex">zuidazy.me</span></li><li><span class="nm">🎬量子影视</span><span class="ex">cj.lziapi.com</span></li></ul></details>
+  </section>
+  <section class="card">
+    <header>
+      <div>
+        <h2>影视 · 🔞<span class="badge">MoonTV 采集源</span></h2>
+        <p class="file">video-18.json</p>
+      </div>
+      <div class="count">28<small>个源</small></div>
+    </header>
+    <div class="url"><code id="uvideo-18.json">https://raw.githubusercontent.com/leimao2333/leimao-sources/main/video-18.json</code>
+      <button onclick="cp('uvideo-18.json', this)">复制</button></div>
+    <details><summary>展开源列表（28）</summary><ul><li><span class="nm">🔞souavZY</span><span class="ex">api.souavzyw.net</span></li><li><span class="nm">🔞精品资源</span><span class="ex">www.jingpinx.com</span></li><li><span class="nm">🔞桃花资源</span><span class="ex">thzy1.me</span></li><li><span class="nm">🔞黑料资源</span><span class="ex">www.heiliaozyapi.com</span></li><li><span class="nm">🔞滴滴资源</span><span class="ex">api.ddapi.cc</span></li><li><span class="nm">🔞鲨鱼资源</span><span class="ex">shayuapi.com</span></li><li><span class="nm">🔞辣椒资源</span><span class="ex">apilj.com</span></li><li><span class="nm">🔞森林资源</span><span class="ex">beiyong.slapibf.com</span></li><li><span class="nm">🔞奶香资源</span><span class="ex">Naixxzy.com</span></li><li><span class="nm">🔞乐播资源</span><span class="ex">lbapi9.com</span></li><li><span class="nm">🔞jkun资源</span><span class="ex">jkunzyapi.com</span></li><li><span class="nm">🔞-大奶子-</span><span class="ex">apidanaizi.com</span></li><li><span class="nm">🔞黄色仓库</span><span class="ex">hsckzy.xyz</span></li><li><span class="nm">🔞小鸡资源</span><span class="ex">api.xiaojizy.live</span></li><li><span class="nm">🔞-老色逼-</span><span class="ex">apilsbzy1.com</span></li><li><span class="nm">🔞番号资源</span><span class="ex">fhapi9.com</span></li><li><span class="nm">🔞玉兔资源</span><span class="ex">apiyutu.com</span></li><li><span class="nm">🔞155-资源</span><span class="ex">155api.com</span></li><li><span class="nm">🔞麻豆视频</span><span class="ex">91md.me</span></li><li><span class="nm">🔞-奥斯卡-</span><span class="ex">aosikazy.com</span></li><li><span class="nm">🔞色猫资源</span><span class="ex">caiji.semaozy.net</span></li><li><span class="nm">🔞大地资源</span><span class="ex">dadiapi.com</span></li><li><span class="nm">🔞杏吧资源</span><span class="ex">xingba222.com</span></li><li><span class="nm">🔞白嫖资源</span><span class="ex">www.kxgav.com</span></li><li><span class="nm">🔞-黄AVZY</span><span class="ex">www.pgxdy.com</span></li><li><span class="nm">🔞-美少女-</span><span class="ex">www.msnii.com</span></li><li><span class="nm">🔞 CK-资源</span><span class="ex">ckzy.me</span></li><li><span class="nm">🔞豆豆资源</span><span class="ex">api.douapi.cc</span></li></ul></details>
+  </section>
+  <footer>
+    <p>导入方式：App → 源管理 → 右上角 + → 粘贴上面任意一条链接 → 下载并导入 → 勾选要添加的源。</p>
+    <p>本页仅分发源的集合，不托管任何内容；第三方站点随时可能失效，失效源可在 App 内删除。</p>
+  </footer>
+</div>
+<script>
+function cp(id, btn) {
+  var t = document.getElementById(id).textContent, o = btn.textContent;
+  (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject())
+    .then(function () { btn.textContent = '已复制'; })
+    .catch(function () {
+      var r = document.createRange(); r.selectNodeContents(document.getElementById(id));
+      var s = getSelection(); s.removeAllRanges(); s.addRange(r);
+      document.execCommand('copy'); s.removeAllRanges(); btn.textContent = '已复制';
+    })
+    .then(function () { setTimeout(function () { btn.textContent = o; }, 1500); });
+}
+</script>
+</body>
+</html>

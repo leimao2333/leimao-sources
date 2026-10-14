@@ -1,0 +1,3 @@
+# 源文件（json / js）必须按原始字节上传，禁止 Git 做换行转换
+*.json -text
+*.js   -text

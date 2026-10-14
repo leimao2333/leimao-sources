@@ -1,0 +1,45 @@
+{
+  "name": "磊毛阅读 聚合源",
+  "app": "leimao-reader",
+  "formatVersion": 1,
+  "generatedFrom": "leimao-backup-20261014-152037.json",
+  "rawBase": "https://raw.githubusercontent.com/leimao2333/leimao-sources/main",
+  "packages": [
+    {
+      "file": "novel.json",
+      "kind": "小说",
+      "format": "legado",
+      "count": 69,
+      "files": 1
+    },
+    {
+      "file": "comic-legado.json",
+      "kind": "漫画",
+      "format": "legado",
+      "count": 11,
+      "files": 1
+    },
+    {
+      "file": "venera/index.json",
+      "kind": "漫画",
+      "format": "venera",
+      "count": 25,
+      "files": 26
+    },
+    {
+      "file": "video.json",
+      "kind": "影视",
+      "format": "moontv",
+      "count": 36,
+      "files": 1
+    },
+    {
+      "file": "video-18.json",
+      "kind": "影视",
+      "format": "moontv",
+      "count": 28,
+      "files": 1,
+      "adult": true
+    }
+  ]
+}
