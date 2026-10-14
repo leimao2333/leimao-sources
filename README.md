@@ -1,30 +1,45 @@
 # 磊毛阅读 聚合源
 
 [磊毛阅读](https://github.com/leimao2333/leimao-reader)（NovelReader）的开箱即用**聚合源**：
-共 **169** 个源，按小说 / 漫画 / 影视分好包，每条链接都能在 App 里「一次导入一整包」。
+共 **169** 个源（小说 69 / 漫画 36 / 影视 64）。
 
-在线索引页：**https://leimao2333.github.io/leimao-sources/**
+在线索引页（带一键复制）：**https://leimao2333.github.io/leimao-sources/**
 
 ## 一键导入
 
-把下面任意一条链接粘进 App 的 **源管理 → 右上角 + → 源导入**，点「下载并导入」，
+把链接粘进 App 的 **源管理 → 右上角 + → 源导入**，点「下载并导入」，
 会先列出解析出的全部源让你勾选，确认后逐个入库。
+
+### 整合版 · 3 条链接覆盖全部 169 个源
+
+| 文件 | 内容 | 数量 | 一键导入链接 |
+| --- | --- | ---: | --- |
+| `legado-all.json` | 小说 + 漫画 · legado 书源 | **80** | `https://raw.githubusercontent.com/leimao2333/leimao-sources/main/legado-all.json` |
+| `video-all.json` | 影视 · 含 🔞 · MoonTV 采集源 | **64** | `https://raw.githubusercontent.com/leimao2333/leimao-sources/main/video-all.json` |
+| `venera/index.json` | 漫画 · Venera 源 | **25** | `https://raw.githubusercontent.com/leimao2333/leimao-sources/main/venera/index.json` |
+
+**为什么不是 1 条？** App 的导入是「下载 → 按内容识别格式 → 导入」，**一次只认一种格式**：
+legado 书源数组 / MoonTV 采集配置 / Venera 源索引，三种结构互不兼容，塞不进同一个文件。
+其中 legado 的小说与漫画能合并（靠 `bookSourceType` 区分内容类型）、影视两个包也是同格式能合并，
+但 **Venera 是独立 JS 运行时源，格式无法与其它两种共存** —— 所以 3 条是当前 App 的下限。
+
+### 细分版 · 按类型 / 是否成人拆开
 
 | 文件 | 内容 | 数量 | 一键导入链接 |
 | --- | --- | ---: | --- |
 | `novel.json` | 小说 · legado 书源 | **69** | `https://raw.githubusercontent.com/leimao2333/leimao-sources/main/novel.json` |
 | `comic-legado.json` | 漫画 · legado 书源 | **11** | `https://raw.githubusercontent.com/leimao2333/leimao-sources/main/comic-legado.json` |
-| `venera/index.json` | 漫画 · Venera 源（需同目录 `.js`，GitHub 直链可直接导入） | **25** | `https://raw.githubusercontent.com/leimao2333/leimao-sources/main/venera/index.json` |
+| `venera/index.json` | 漫画 · Venera 源 | **25** | `https://raw.githubusercontent.com/leimao2333/leimao-sources/main/venera/index.json` |
 | `video.json` | 影视 · MoonTV 采集源 | **36** | `https://raw.githubusercontent.com/leimao2333/leimao-sources/main/video.json` |
 | `video-18.json` | 影视 · 🔞 · MoonTV 采集源 | **28** | `https://raw.githubusercontent.com/leimao2333/leimao-sources/main/video-18.json` |
 
-> 说明：`comic-legado.json` 与 `venera/index.json` 都是漫画源，前者是 legado 规则、后者是 Venera 运行时源，可以同时导入。
-> `video.json` / `video-18.json` 是两个独立文件，互不重叠，想用成人源再单独导入 `video-18.json`。
+> `venera/index.json` 需要同目录下的 25 个 `.js`，GitHub 直链可直接导入，不用手动下载。
+> `video.json` 是干净的 36 个普通源；`video-18.json` 与整合版 `video-all.json` 含成人源，自行决定是否导入。
 
 ## 包内容
 
 <details>
-<summary><b>小说 · 69 个（legado）</b></summary>
+<summary><b>小说 · 69 个（legado 书源）</b></summary>
 
 - 中文书城 —— <sub>备用</sub>
 - 笔趣阁 —— <sub>备用</sub>
@@ -99,7 +114,7 @@
 </details>
 
 <details>
-<summary><b>漫画 · 11 个（legado）</b></summary>
+<summary><b>漫画 · 11 个（legado 书源）</b></summary>
 
 - 酸奶漫画 —— <sub>漫画 书源</sub>
 - 酝酿漫画（魔法） —— <sub>漫画 书源</sub>
@@ -116,7 +131,7 @@
 </details>
 
 <details>
-<summary><b>漫画 · 25 个（Venera）</b></summary>
+<summary><b>漫画 · 25 个（Venera 源）</b></summary>
 
 - 包子漫画 —— <sub>baozi.js</sub>
 - CCC追漫台 —— <sub>ccc.js</sub>
@@ -147,7 +162,7 @@
 </details>
 
 <details>
-<summary><b>影视 · 36 个（MoonTV）</b></summary>
+<summary><b>影视 · 36 个（MoonTV 采集源）</b></summary>
 
 - 🎬艾旦影视 —— <sub>pz.v88.qzz.io</sub>
 - 🎬百度云zy —— <sub>pz.v88.qzz.io</sub>
@@ -189,7 +204,7 @@
 </details>
 
 <details>
-<summary><b>影视 · 28 个（MoonTV · 🔞）</b></summary>
+<summary><b>影视 · 🔞 · 28 个（MoonTV 采集源）</b></summary>
 
 - 🔞souavZY —— <sub>api.souavzyw.net</sub>
 - 🔞精品资源 —— <sub>www.jingpinx.com</sub>
@@ -228,6 +243,7 @@
 - **小说 / 漫画（legado）**：id 由「导入链接 + 条目序号」推导，同一个链接重复导入会原地更新；
   但如果本地已有一份**从别处**导入的同名源，会并存为两条。
 - **Venera 源**：id 由 `.js` 文件名推导（`venera_<文件名>`），重复导入原地更新。
+- 整合版与细分版是**不同文件、不同链接** → id 前缀不同，两份都导入会各存一份。选一种就好。
 
 ## 更新方式
 
@@ -242,5 +258,5 @@ python tools/gen.py /path/to/leimao-backup-YYYYMMDD-HHMMSS.json
 - 本仓库只是**源的集合与分发**，不托管任何小说 / 漫画 / 影视内容，所有数据均来自第三方站点。
 - 源由脚本从个人使用备份中导出，**未做逐条可用性校验**；第三方站点随时可能改版或失效，
   失效源可自行在 App 内编辑或删除（`源管理 → 一键删除失效源`）。
-- `video-18.json` 内含成人内容源，仅供成年人自行决定是否导入。
+- 含 🔞 标记的包为成人内容源，仅供成年人自行决定是否导入。
 - 仅供个人学习与自用，请勿用于商业用途；使用前请确认符合你所在地的法律法规。

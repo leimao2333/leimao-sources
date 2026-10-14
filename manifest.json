@@ -4,42 +4,71 @@
   "formatVersion": 1,
   "generatedFrom": "leimao-backup-20261014-152037.json",
   "rawBase": "https://raw.githubusercontent.com/leimao2333/leimao-sources/main",
+  "total": 169,
   "packages": [
     {
-      "file": "novel.json",
-      "kind": "小说",
-      "format": "legado",
-      "count": 69,
+      "file": "legado-all.json",
+      "title": "小说 + 漫画",
+      "format": "legado 书源",
+      "count": 80,
+      "group": "整合",
       "files": 1
     },
     {
-      "file": "comic-legado.json",
-      "kind": "漫画",
-      "format": "legado",
-      "count": 11,
+      "file": "video-all.json",
+      "title": "影视 · 含 🔞",
+      "format": "MoonTV 采集源",
+      "count": 64,
+      "group": "整合",
       "files": 1
     },
     {
       "file": "venera/index.json",
-      "kind": "漫画",
-      "format": "venera",
+      "title": "漫画",
+      "format": "Venera 源",
       "count": 25,
+      "group": "整合",
+      "files": 26
+    },
+    {
+      "file": "novel.json",
+      "title": "小说",
+      "format": "legado 书源",
+      "count": 69,
+      "group": "细分",
+      "files": 1
+    },
+    {
+      "file": "comic-legado.json",
+      "title": "漫画",
+      "format": "legado 书源",
+      "count": 11,
+      "group": "细分",
+      "files": 1
+    },
+    {
+      "file": "venera/index.json",
+      "title": "漫画",
+      "format": "Venera 源",
+      "count": 25,
+      "group": "细分",
       "files": 26
     },
     {
       "file": "video.json",
-      "kind": "影视",
-      "format": "moontv",
+      "title": "影视",
+      "format": "MoonTV 采集源",
       "count": 36,
+      "group": "细分",
       "files": 1
     },
     {
       "file": "video-18.json",
-      "kind": "影视",
-      "format": "moontv",
+      "title": "影视 · 🔞",
+      "format": "MoonTV 采集源",
       "count": 28,
-      "files": 1,
-      "adult": true
+      "group": "细分",
+      "files": 1
     }
   ]
 }
