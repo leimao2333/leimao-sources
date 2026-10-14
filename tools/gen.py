@@ -7,7 +7,11 @@
 
 从「磊毛阅读」的云备份 JSON 里抽出全部源，生成可直接一键导入的聚合包：
 
-    整合版（3 条链接覆盖全部源）
+    ✅ 一条链接（App ≥ 1.5.6.0）
+        all.json             聚合源包清单：App 按清单逐个下载下面的 3 个源包，
+                             合并成一份候选列表，勾选一次全部入库
+
+    整合版（3 条链接覆盖全部源，旧版 App 用这个）
         legado-all.json      小说 + 漫画（legado 书源，80）
         video-all.json       影视 · 含成人（MoonTV 配置，64）
         venera/index.json    漫画（Venera 源索引，25，同目录 .js 为源码）
@@ -22,10 +26,11 @@
         manifest.json        包清单（供工具读取）
         README.md / index.html  自动生成的说明与索引页
 
-为什么不能只给「1 条链接」：App 的导入是「下载 → 按内容识别格式 → 导入」，
+为什么需要 all.json 这一层：App 的导入是「下载 → 按内容识别格式 → 导入」，
 一次只认一种格式（legado 数组 / MoonTV 配置 / Venera 索引），三种格式无法共存于一个文件。
-legado 的小说与漫画可以合并（靠 bookSourceType 区分类型），影视两个包也是同格式可合并，
-但 Venera 是独立 JS 运行时、只能单独一条 —— 所以 3 条是当前 App 的下限。
+legado 的小说与漫画可以合并（靠 bookSourceType 区分类型）、影视两个包也是同格式可合并，
+但 Venera 是独立 JS 运行时、只能单独一条。清单把这件「多格式」的事从文件层提到了 App 层：
+App 端 v1.5.6.0 起支持 leimaoPack 清单（见 NovelReader 的 SourcePack / previewImportBatch）。
 
 备份文件结构：{"app":"leimao-reader","sources":[{"type","format","name","rawContent",...}]}
 """
@@ -118,6 +123,22 @@ def build_venera(srcs):
     return entries, files
 
 
+def build_pack_manifest(total, files):
+    """
+    聚合源包清单（leimaoPack，all.json）—— App ≥ 1.5.6.0 的「一条链接导入全部源」入口。
+
+    清单本身不是源：它只是同目录下源包的文件名列表，App 按清单 URL 逐个下载、
+    合并成一份候选列表。字段含义见 NovelReader 的 `source/loader/SourcePack.kt`。
+    """
+    return {
+        "leimaoPack": 1,
+        "name": "磊毛阅读 聚合源",
+        "version": "1.0",
+        "total": total,
+        "files": list(files),
+    }
+
+
 # ---------------------------------------------------------------- 文档
 
 def md_table(pkgs):
@@ -161,14 +182,25 @@ def build_readme(pkgs, total):
 把链接粘进 App 的 **源管理 → 右上角 + → 源导入**，点「下载并导入」，
 会先列出解析出的全部源让你勾选，确认后逐个入库。
 
-### 整合版 · 3 条链接覆盖全部 {total} 个源
+### 一条链接导入全部 {total} 个源（App ≥ 1.5.6.0）
+
+| 文件 | 内容 | 数量 | 一键导入链接 |
+| --- | --- | ---: | --- |
+| `all.json` | 聚合源包清单（App 自动下载下面 3 个源包并合并候选） | **{total}** | `{RAW_BASE}/all.json` |
+
+> ⚠️ **需要 App v1.5.6.0 及以上**。旧版不认这个清单格式，请用下面的 3 条整合版链接。
+> 清单里写的是相对路径，App 按清单自身地址解析，所以**复制整条链接即可，不要改域名/分支**。
+
+### 整合版 · 3 条链接覆盖全部 {total} 个源（旧版 App 适用）
 
 {md_table(merged)}
 
-**为什么不是 1 条？** App 的导入是「下载 → 按内容识别格式 → 导入」，**一次只认一种格式**：
+**为什么 3 条曾是下限？** App 的导入是「下载 → 按内容识别格式 → 导入」，**一次只认一种格式**：
 legado 书源数组 / MoonTV 采集配置 / Venera 源索引，三种结构互不兼容，塞不进同一个文件。
 其中 legado 的小说与漫画能合并（靠 `bookSourceType` 区分内容类型）、影视两个包也是同格式能合并，
-但 **Venera 是独立 JS 运行时源，格式无法与其它两种共存** —— 所以 3 条是当前 App 的下限。
+但 **Venera 是独立 JS 运行时源，格式无法与其它两种共存**。
+v1.5.6.0 起 App 支持 `leimaoPack` 清单（`all.json`）：由 App 负责「多文件下载 + 合并候选」，
+于是终于能用**一条链接**导入全部格式。
 
 ### 细分版 · 按类型 / 是否成人拆开
 
@@ -188,6 +220,9 @@ legado 书源数组 / MoonTV 采集配置 / Venera 源索引，三种结构互�
   但如果本地已有一份**从别处**导入的同名源，会并存为两条。
 - **Venera 源**：id 由 `.js` 文件名推导（`venera_<文件名>`），重复导入原地更新。
 - 整合版与细分版是**不同文件、不同链接** → id 前缀不同，两份都导入会各存一份。选一种就好。
+- **一条链接（`all.json`）与 3 条整合版只是入口不同，源包内容完全一样**：
+  `all.json` 里就是那 3 个文件，App 逐个下载后走同一套解析，所以两者的源 id 也一致 ——
+  重复导入原地更新，不会因为「换了个导入入口」而多出一份。
 
 ## 更新方式
 
@@ -264,6 +299,9 @@ def build_index(pkgs, total):
   .url code {{ flex: 1; min-width: 0; overflow-x: auto; white-space: nowrap; padding: 7px 10px;
                background: #f6f8fa; border: 1px solid #d8dee4; border-radius: 6px;
                font: 12.5px/1.5 ui-monospace, Consolas, monospace; }}
+  .hint {{ margin: 10px 0 0; color: #59636e; font-size: 12.5px; }}
+  .hint code {{ background: #f6f8fa; border-radius: 4px; padding: 1px 4px;
+                font: 12px/1.5 ui-monospace, Consolas, monospace; }}
   button {{ padding: 7px 14px; border: 1px solid #d0d7de; border-radius: 6px; background: #f6f8fa;
             cursor: pointer; font-size: 13px; color: #1f2328; }}
   button:hover {{ background: #eef1f4; }}
@@ -284,15 +322,31 @@ def build_index(pkgs, total):
 <body>
 <div class="wrap">
   <h1>磊毛阅读 · 聚合源</h1>
-  <p class="sub">共 <span class="total">{total}</span> 个源。整合版 <b>3 条链接</b>即可全部导入，也可按类型挑细分包。</p>
+  <p class="sub">共 <span class="total">{total}</span> 个源。<b>一条链接</b>即可全部导入（App ≥ v1.5.6.0），也可按类型挑细分包。</p>
 
-  <h2 class="sec">整合版 <span>· 3 条链接覆盖全部 {total} 个源</span></h2>
+  <section class="card hi pack">
+    <header>
+      <div>
+        <h2>一条链接导入全部<span class="badge">聚合源包清单</span></h2>
+        <p class="file">all.json · 需要 App v1.5.6.0 及以上</p>
+      </div>
+      <div class="count">{total}<small>个源</small></div>
+    </header>
+    <div class="url"><code id="uall-json">{RAW_BASE}/all.json</code>
+      <button onclick="cp('uall-json', this)">复制</button></div>
+    <p class="hint">清单内含 legado-all.json / video-all.json / venera/index.json 三个源包；
+      App 会按清单地址逐个下载，把小说·漫画·影视·Venera 四类源合并成一份勾选列表，确认一次全部入库。
+      旧版 App 不认识这个清单格式，请用下面的 3 条整合版链接。</p>
+  </section>
+
+  <h2 class="sec">整合版 <span>· 3 条链接覆盖全部 {total} 个源（旧版 App 适用）</span></h2>
 {cards(merged, highlight=True)}
   <div class="note">
-    <b>为什么不是 1 条链接？</b> App 的导入是「下载 → 按内容识别格式 → 导入」，一次只认一种格式
+    <b>为什么 3 条曾是下限？</b> App 的导入是「下载 → 按内容识别格式 → 导入」，一次只认一种格式
     （legado 书源数组 / MoonTV 采集配置 / Venera 源索引），三种结构互不兼容，塞不进同一个文件。
     legado 的小说与漫画能合并、影视两个包也是同格式能合并，但 Venera 是独立 JS 运行时源，
-    无法与其它两种共存 —— 所以 3 条是当前 App 的下限。
+    无法与其它两种共存。v1.5.6.0 起 App 支持 leimaoPack 清单（<code>all.json</code>）：
+    由 App 负责「多文件下载 + 合并候选」，于是可以用<b>一条链接</b>导入全部格式。
   </div>
 
   <h2 class="sec">细分版 <span>· 按类型 / 是否成人拆开</span></h2>
@@ -379,6 +433,10 @@ def main():
     ]
 
     total = len(legado_all) + len(moontv_all["api_site"]) + len(venera_entries)
+
+    # 一条链接：聚合源包清单（App ≥ 1.5.6.0）
+    pack_files = ["legado-all.json", "video-all.json", "venera/index.json"]
+    dump(build_pack_manifest(total, pack_files), "all.json")
 
     dump({
         "name": "磊毛阅读 聚合源",

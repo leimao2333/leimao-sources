@@ -29,6 +29,9 @@
   .url code { flex: 1; min-width: 0; overflow-x: auto; white-space: nowrap; padding: 7px 10px;
                background: #f6f8fa; border: 1px solid #d8dee4; border-radius: 6px;
                font: 12.5px/1.5 ui-monospace, Consolas, monospace; }
+  .hint { margin: 10px 0 0; color: #59636e; font-size: 12.5px; }
+  .hint code { background: #f6f8fa; border-radius: 4px; padding: 1px 4px;
+                font: 12px/1.5 ui-monospace, Consolas, monospace; }
   button { padding: 7px 14px; border: 1px solid #d0d7de; border-radius: 6px; background: #f6f8fa;
             cursor: pointer; font-size: 13px; color: #1f2328; }
   button:hover { background: #eef1f4; }
@@ -49,9 +52,24 @@
 <body>
 <div class="wrap">
   <h1>磊毛阅读 · 聚合源</h1>
-  <p class="sub">共 <span class="total">169</span> 个源。整合版 <b>3 条链接</b>即可全部导入，也可按类型挑细分包。</p>
+  <p class="sub">共 <span class="total">169</span> 个源。<b>一条链接</b>即可全部导入（App ≥ v1.5.6.0），也可按类型挑细分包。</p>
 
-  <h2 class="sec">整合版 <span>· 3 条链接覆盖全部 169 个源</span></h2>
+  <section class="card hi pack">
+    <header>
+      <div>
+        <h2>一条链接导入全部<span class="badge">聚合源包清单</span></h2>
+        <p class="file">all.json · 需要 App v1.5.6.0 及以上</p>
+      </div>
+      <div class="count">169<small>个源</small></div>
+    </header>
+    <div class="url"><code id="uall-json">https://raw.githubusercontent.com/leimao2333/leimao-sources/main/all.json</code>
+      <button onclick="cp('uall-json', this)">复制</button></div>
+    <p class="hint">清单内含 legado-all.json / video-all.json / venera/index.json 三个源包；
+      App 会按清单地址逐个下载，把小说·漫画·影视·Venera 四类源合并成一份勾选列表，确认一次全部入库。
+      旧版 App 不认识这个清单格式，请用下面的 3 条整合版链接。</p>
+  </section>
+
+  <h2 class="sec">整合版 <span>· 3 条链接覆盖全部 169 个源（旧版 App 适用）</span></h2>
   <section class="card hi">
     <header>
       <div>
@@ -89,10 +107,11 @@
     <details><summary>展开源列表（25）</summary><ul><li><span class="nm">包子漫画</span><span class="ex">baozi.js</span></li><li><span class="nm">CCC追漫台</span><span class="ex">ccc.js</span></li><li><span class="nm">拷贝漫画</span><span class="ex">copy_manga.js</span></li><li><span class="nm">拷贝漫画M</span><span class="ex">copy_manga_multi_accounts.js</span></li><li><span class="nm">ehentai</span><span class="ex">ehentai.js</span></li><li><span class="nm">GoDa漫画</span><span class="ex">goda.js</span></li><li><span class="nm">嗨皮漫画</span><span class="ex">happy.js</span></li><li><span class="nm">H-Comic</span><span class="ex">hcomic.js</span></li><li><span class="nm">hitomi.la</span><span class="ex">hitomi.js</span></li><li><span class="nm">热辣漫画</span><span class="ex">hot_manga.js</span></li><li><span class="nm">爱看漫</span><span class="ex">ikmmh.js</span></li><li><span class="nm">jcomic.net</span><span class="ex">jcomic.js</span></li><li><span class="nm">禁漫天堂</span><span class="ex">jm.js</span></li><li><span class="nm">Kavita</span><span class="ex">kavita.js</span></li><li><span class="nm">Komiic</span><span class="ex">komiic.js</span></li><li><span class="nm">MangaDex</span><span class="ex">manga_dex.js</span></li><li><span class="nm">漫画人</span><span class="ex">manhuaren.js</span></li><li><span class="nm">漫画1234</span><span class="ex">mh1234.js</span></li><li><span class="nm">18漫画</span><span class="ex">mh18.js</span></li><li><span class="nm">漫小肆</span><span class="ex">mxs.js</span></li><li><span class="nm">MYCOMIC</span><span class="ex">mycomic.js</span></li><li><span class="nm">nhentai</span><span class="ex">nhentai.js</span></li><li><span class="nm">Picacg</span><span class="ex">picacg.js</span></li><li><span class="nm">少年ジャンプ＋</span><span class="ex">shonen_jump_plus.js</span></li><li><span class="nm">紳士漫畫</span><span class="ex">wnacg.js</span></li></ul></details>
   </section>
   <div class="note">
-    <b>为什么不是 1 条链接？</b> App 的导入是「下载 → 按内容识别格式 → 导入」，一次只认一种格式
+    <b>为什么 3 条曾是下限？</b> App 的导入是「下载 → 按内容识别格式 → 导入」，一次只认一种格式
     （legado 书源数组 / MoonTV 采集配置 / Venera 源索引），三种结构互不兼容，塞不进同一个文件。
     legado 的小说与漫画能合并、影视两个包也是同格式能合并，但 Venera 是独立 JS 运行时源，
-    无法与其它两种共存 —— 所以 3 条是当前 App 的下限。
+    无法与其它两种共存。v1.5.6.0 起 App 支持 leimaoPack 清单（<code>all.json</code>）：
+    由 App 负责「多文件下载 + 合并候选」，于是可以用<b>一条链接</b>导入全部格式。
   </div>
 
   <h2 class="sec">细分版 <span>· 按类型 / 是否成人拆开</span></h2>
