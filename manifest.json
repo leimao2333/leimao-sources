@@ -4,7 +4,7 @@
   "formatVersion": 1,
   "generatedFrom": "leimao-backup-20261014-152037.json",
   "rawBase": "https://raw.githubusercontent.com/leimao2333/leimao-sources/main",
-  "total": 169,
+  "total": 177,
   "packages": [
     {
       "file": "legado-all.json",
@@ -26,9 +26,9 @@
       "file": "venera/index.json",
       "title": "漫画",
       "format": "Venera 源",
-      "count": 25,
+      "count": 33,
       "group": "整合",
-      "files": 26
+      "files": 34
     },
     {
       "file": "novel.json",
@@ -50,9 +50,9 @@
       "file": "venera/index.json",
       "title": "漫画",
       "format": "Venera 源",
-      "count": 25,
+      "count": 33,
       "group": "细分",
-      "files": 26
+      "files": 34
     },
     {
       "file": "video.json",
