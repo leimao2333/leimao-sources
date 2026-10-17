@@ -118,11 +118,11 @@
     "ruleBookInfo": {
       "intro": "class.summary__content @p@text",
       "lastChapter": "class.wp-manga-action-button@data-post",
-      "tocUrl": "https://manhwatop.com/wp-admin/admin-ajax.php,{\n\"method\":\"post\",\n\"body\":\"action=manga_get_chapters&manga={{book.latestChapterTitle}}\",\n\"headers\":{\"referer\":\"{{source.getKey()}}\"}\n}"
+      "tocUrl": "{{baseUrl}}ajax/chapters/,{\"method\":\"POST\",\"body\":\"\"}"
     },
     "ruleContent": {
-      "content": "class.reading-content@class.page-break!0@img@html",
-      "replaceRegex": "##\">\\n##,{'headers':{'referer':'{{source.getKey()}}'}}$0"
+      "content": "@css:div.page-break img",
+      "imageStyle": "data-src"
     },
     "ruleExplore": {},
     "ruleSearch": {
@@ -135,7 +135,7 @@
       "name": "class.tab-thumb c-image-hover@a@title"
     },
     "ruleToc": {
-      "chapterList": "-class.listing-chapters_wrap show-more@tag.li",
+      "chapterList": "class.listing-chapters_wrap@tag.li",
       "chapterName": "a@text",
       "chapterUrl": "a@href"
     },
